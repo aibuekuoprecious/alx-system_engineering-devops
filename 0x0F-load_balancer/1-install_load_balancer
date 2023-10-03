@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# Install and configure HAproxy on your load balancer server
+
+# Allow traffic on port 1344 (if needed)
+ufw allow 1344
+
+# Update the package list
+apt-get -y update
+
+# Install HAProxy
+apt-get install -y haproxy
+
+# Configure HAProxy
+cat <<EOF > /etc/haproxy/haproxy.cfg
+global
+    log /dev/log local0
+    log /dev/log local1 notice
+    maxconn 2000
+    user haproxy
+    group haproxy
+    daemon
+
+defaults
+    log global
+    mode http
+    option httplog
+    option dontlognull
+    timeout connect 5000
+    timeout client 50000
+    timeout server 50000
+
+frontend proxynode
+    bind *:80
+    default_backend web-backend
+
+backend web-backend
+    balance roundrobin
+    option forwardfor
+    server 9318-web-01 3.236.115.124:80 check
+    server 9318-web-02 3.227.233.5:80 check
+EOF
+
+# Restart HAProxy
+service haproxy restart
