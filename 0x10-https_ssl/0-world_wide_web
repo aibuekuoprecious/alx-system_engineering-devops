@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# A script that displays domain dns informations for a domain
+
+# Define a function to display domain DNS information
+domaininfo () {
+    # Run 'dig' command to get DNS information and store the ANSWER SECTION
+    answer_section=$(dig "$1" | grep -A1 'ANSWER SECTION' | tail -n 1)
+
+    # Extract subdomain, record type, and IP address using 'awk'
+    subdomain=$(echo "$answer_section" | awk '{print $1;}' FS=.)
+    record_type=$(echo "$answer_section" | awk '{print $4;}')
+    ip_address=$(echo "$answer_section" | awk '{print $5}')
+
+    # Display the extracted information
+    echo "The subdomain $subdomain is a $record_type record and points to $ip_address"
+}
+
+# Check the number of command-line arguments
+if [ $# -eq 1 ]; then
+    # If there is one argument, assume it's the domain and query with common subdomains
+    domaininfo "www.$1"
+    domaininfo "lb-01.$1"
+    domaininfo "web-01.$1"
+    domaininfo "web-02.$1"
+elif [ $# -eq 2 ]; then
+    # If there are two arguments, assume the first is the subdomain and the second is the domain
+    domaininfo "$2.$1"
+else
+    # Display an error message for invalid input
+    echo "Usage: $0 <domain> [subdomain]"
+fi
