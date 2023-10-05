@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Fix nginx configuration and start on port 80
+
+# Remove ipv6only=on from Nginx configuration
+sudo sed -i "s/ipv6only=on//" /etc/nginx/sites-available/default
+
+# Remove the default configuration symlink if it exists
+sudo rm -f /etc/nginx/sites-enabled/default
+
+# Create a symlink to enable the default configuration
+sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
+# Restart Nginx to apply the changes
+sudo service nginx restart
+
+# Inform the user about the changes
+echo "Nginx has been configured to listen on port 80."
