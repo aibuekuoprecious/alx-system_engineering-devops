@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # A script that displays domain dns informations for a domain
-
 # Define a function to display domain DNS information
 domaininfo () {
     # Run 'dig' command to get DNS information and store the ANSWER SECTION

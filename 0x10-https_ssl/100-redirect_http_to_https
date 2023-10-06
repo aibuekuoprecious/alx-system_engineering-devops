@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+# HAProxy Configuration
 # Global Configuration
 global
     # Logging Configuration
