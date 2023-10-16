@@ -1,0 +1,16 @@
+# Install the UFW firewall.
+sudo apt-get -y install ufw
+
+# Enable the UFW firewall.
+sudo ufw enable
+
+# Set the default policy to deny all incoming connections.
+sudo ufw default deny incoming
+
+# Allow incoming connections on ports 22 (SSH), 80 (HTTP), and 443 (HTTPS).
+sudo ufw allow 22
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+
+# Reload the UFW firewall configuration.
+sudo ufw reload
