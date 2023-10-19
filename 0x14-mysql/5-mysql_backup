@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# Bash script that generates a MySQL dump and creates a compressed archive out of it.
+
+# Export all databases to backup.sql
+# Usage: ./backup.sh [MySQL Root Password]
+# Note: Replace [MySQL Root Password] with your MySQL root password.
+
+# Define the output file
+output_file="$(date +'%d-%m-%Y').tar.gz"
+
+# Generate MySQL dump for all databases
+sudo mysqldump -u root -p"$1" --all-databases > backup.sql
+
+# Create a compressed archive
+tar -czvf "$output_file" backup.sql
+
+# Optional: Remove the temporary backup.sql file
+# rm backup.sql
+
+echo "Backup completed and stored in $output_file"
+
