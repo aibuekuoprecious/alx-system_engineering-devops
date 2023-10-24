@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-""" Script that uses JSONPlaceholder API to get information about all employees and write it to JSON file """
+"""
+Script uses JSONPlcholder API to get info about all empees and wrt to JSON file
+"""
 import json
 import requests
 import sys

@@ -20,7 +20,7 @@ def get_user_todo_list(employee_id):
 
 
 def get_completed_todo_titles(todo_list):
-    """Returns a list of the titles of the completed TODOs in the given list."""
+    """Returns a list of the titles of the completed TODOs in the list."""
 
     completed_todo_titles = []
     for todo in todo_list:

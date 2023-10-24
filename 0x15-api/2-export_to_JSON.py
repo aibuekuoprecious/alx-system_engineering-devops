@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Script that uses JSONPlaceholder API to get information about employee and write it to JSON file
+Script uses JSONPlaceholder API to get info about employee and write in JSON
 """
 import json
 import requests
@@ -9,7 +9,7 @@ import sys
 
 def get_employee_info(url, userid):
     """
-    Returns a JSON object with information about the employee with the given ID.
+    Returns a JSON object with info about the employee with the given ID7.
     """
 
     user = '{}users/{}'.format(url, userid)
