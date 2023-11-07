@@ -8,7 +8,7 @@ HEADERS = {'user-agent': 'my-app/0.0.1'}
 
 def count_words(subreddit, keywords, pagination_token="", keyword_counts={}):
     """
-    Recursive function that queries the Reddit API, parses the title 
+    Recursive function that queries the Reddit API, parses the title
     of all hot articles, and prints a sorted count of given keywords
     (case-insensitive, delimited by spaces.
     """
@@ -17,11 +17,15 @@ def count_words(subreddit, keywords, pagination_token="", keyword_counts={}):
             keyword_counts[keyword] = 0
 
     if pagination_token is None:
-        keyword_counts = [[key, value] for key, value in keyword_counts.items()]
+        keyword_counts = [[key, value]
+                          for key, value in keyword_counts.items()]
         keyword_counts = sorted(keyword_counts, key=lambda x: (-x[1], x[0]))
         for keyword_count in keyword_counts:
             if keyword_count[1]:
-                print("{}: {}".format(keyword_count[0].lower(), keyword_count[1]))
+                print(
+                    "{}: {}".format(
+                        keyword_count[0].lower(),
+                        keyword_count[1]))
         return None
 
     url = REDDIT + "r/{}/hot/.json".format(subreddit)
@@ -48,8 +52,9 @@ def count_words(subreddit, keywords, pagination_token="", keyword_counts={}):
             post_title = post.get("title")
             lowercase_words = [s.lower() for s in post_title.split(' ')]
             for keyword in keywords:
-                keyword_counts[keyword] += lowercase_words.count(keyword.lower())
-    except:
+                keyword_counts[keyword] += lowercase_words.count(
+                    keyword.lower())
+    except BaseException:
         return None
 
     count_words(subreddit, keywords, pagination_token, keyword_counts)
