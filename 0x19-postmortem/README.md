@@ -8,14 +8,14 @@
 
 ## Timeline
 
-- **12:20 PM PST:** Our monitoring systems, which usually quietly keep an eye on our platform, started making loud alerts. They noticed that our e-commerce website was becoming slow.
-- **12:25 PM PST:** Our alert engineers quickly went to check what was happening. They found that our load balancer was sending way too much traffic to one of our servers.
-- **12:30 PM PST:** The overloaded server couldn't handle all the traffic and crashed, causing the entire e-commerce website to go offline.
-- **12:35 PM PST:** We got our emergency response team involved to fix the issue.
-- **12:40 PM PST:** Our emergency response engineers, with their technical knowledge and some strong coffee, found that the problem was a mistake in the load balancer's settings.
-- **1:15 PM PST:** After making careful adjustments and keeping a close watch, our engineers managed to convince the load balancer to start working correctly again.
-- **2:00 PM PST:** The overloaded server had recovered and was slowly getting back to work. Our e-commerce website began to work again.
-- **2:45 PM PST:** The e-commerce website was fully back to normal, and customers could shop, make purchases, and access their accounts again.
+- **12:20 PM GMT+1:** Our monitoring systems, which usually quietly keep an eye on our platform, started making loud alerts. They noticed that our e-commerce website was becoming slow.
+- **12:25 PM GMT+1:** Our alert engineers quickly went to check what was happening. They found that our load balancer was sending way too much traffic to one of our servers.
+- **12:30 PM GMT+1:** The overloaded server couldn't handle all the traffic and crashed, causing the entire e-commerce website to go offline.
+- **12:35 PM GMT+1:** We got our emergency response team involved to fix the issue.
+- **12:40 PM GMT+1:** Our emergency response engineers, with their technical knowledge and some strong coffee, found that the problem was a mistake in the load balancer's settings.
+- **1:15 PM GMT+1:** After making careful adjustments and keeping a close watch, our engineers managed to convince the load balancer to start working correctly again.
+- **2:00 PM GMT+1:** The overloaded server had recovered and was slowly getting back to work. Our e-commerce website began to work again.
+- **2:45 PM GMT+1:** The e-commerce website was fully back to normal, and customers could shop, make purchases, and access their accounts again.
 
 ## Root Cause and Resolution
 
