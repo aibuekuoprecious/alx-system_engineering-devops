@@ -1,0 +1,33 @@
+server {
+    listen 80 default_server;
+
+    # Static content for HBNB
+    location /hbnb_static {
+        alias /data/web_static/current;
+    }
+    location /hbnb_static/ {
+        alias /data/web_static/current/;
+    }
+
+    # Proxy requests to backend services
+    server_name 34.224.63.159;
+
+    include proxy_params;
+
+    location /airbnb-onepage/ {
+        proxy_pass http://0.0.0.0:5000;
+    }
+
+    root /var/www/html;
+
+    # Add index.php to the list if you are using PHP
+    index index.html index.htm index.php index.nginx-debian.html;
+
+    # Catch-all server name
+    server_name _;
+
+    # Try these paths before returning a 404 error
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
